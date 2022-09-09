@@ -1,5 +1,5 @@
 # stm32-dev
-This is a bare metal STM32 (F4) C project template.
+A bare metal C project template for STM32 microcontrollers using Docker and Visual Studio Code.
 
 ## Getting Started
 
