@@ -1,0 +1,16 @@
+*.o
+*.d
+*.bin
+*.elf
+*.hex
+*.lst
+*.map
+vscode
+.metadata/
+.settings/
+Debug/
+Release/
+*.launch
+RemoteSystemsTempFiles/
+build
+.DS_Store
