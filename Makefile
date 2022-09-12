@@ -4,7 +4,7 @@ BUILD_DIR := build
 TARGET := blinky
 BUILD_TYPE ?= Debug
 
-all: build flash
+all: build
 
 ${BUILD_DIR}/Makefile:
 	cmake \
