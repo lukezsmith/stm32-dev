@@ -31,8 +31,9 @@ To test new modules it is necessary to follow these steps:
 `list(APPEND tests_names "test_<your_module_name>")`
 
 #### HAL Drivers
-In `CMakeLists.txt` only a subset of HAL drivers have been added to the executable build. It may be necessary to update this list if you use a HAL driver that is not already included in the executable.
- 
+In `CMakeLists.txt` only a subset of HAL drivers have been added to the executable build. It may be necessary to update this list if you use a HAL driver that is not already included in the executable. 
+**Note**: To use the HAL driver you will also need to enable it in the `include/stm32f4xx_hal_conf.h` file, also.
+
 ### Building
 The template uses CMake to build the code. 
 To automate the process there is a Makefile in the root directory which can be run to automate the build.
