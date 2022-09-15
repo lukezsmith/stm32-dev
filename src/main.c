@@ -1,37 +1,24 @@
-#include "stm32f407xx.h"
+#include "stm32f4xx.h"
+#include "simple_module.h"
+#include "stm32f4xx_hal_gpio.h"
 
 // LED delay duration
 #define LEDDELAY    1000000
 
-int main(void);
-void delay(volatile uint32_t);
-
-int main(void)
-{
-    // Enable GPIOD clock (AHB1ENR: bit 3)
-    RCC->AHB1ENR |= (1U << 3);
-
-    // reset bits 25 and 24 (pin 12)
-    GPIOD->MODER &= ~(1U << 24);
-    // set 25 and 24 bits
-    GPIOD->MODER |=  (1U << 24);
-    // Set pin 12 to turn on LED
-    GPIOD->ODR |= (1U << 12);
-
-    while(1)
-    {
-        delay(LEDDELAY);
-        
-        // Toggle LED
-        GPIOD->ODR ^= (1U << 12);  
-    }
-    __asm("NOP");
-    return 0;
-}
-
-
-// delay function
-void delay(volatile uint32_t s)
-{
-    for(; s>0; s--);
+int main(){
+	
+	GPIO_InitTypeDef GPIOD_Params; // Initilisation structure for GPIOD Settings
+	
+	__HAL_RCC_GPIOD_CLK_ENABLE(); // Turn on Clock of GPIOD
+	
+	// Configure the GPIO Pins 12, 13, 14 and 15 used for LEDs
+	GPIOD_Params.Pin = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15; // Select pins 12 to 15
+	GPIOD_Params.Mode = GPIO_MODE_OUTPUT_PP; // Set pins to push pull output mode
+	GPIOD_Params.Speed = GPIO_SPEED_LOW; // Set low output speed
+	HAL_GPIO_Init(GPIOD, &GPIOD_Params); // Initialise GPIOD according to parameters on GPIOD_Params
+	
+	while(1){
+		delay(LEDDELAY); // Delay
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15); // Toggle LEDs
+	}
 }

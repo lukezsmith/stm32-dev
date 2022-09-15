@@ -27,27 +27,3 @@ foreach(i RANGE ${count})
     endif()
     gtest_discover_tests(${test_name})
 endforeach()
-
-# # add_executable(
-# #   hello_test
-# #   hello_test.cc
-# # )
-# # target_link_libraries(
-# #   hello_test
-# #   GTest::gtest_main
-# # )
-
-
-# enable_testing()
-
-# add_executable(
-#   test_simple_module
-#   test_simple_module.cc
-# )
-# target_link_libraries(
-#     test_simple_module
-#   GTest::gtest_main
-# )
-
-# include(GoogleTest)
-# gtest_discover_tests(test_simple_module)

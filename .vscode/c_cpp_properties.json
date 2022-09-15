@@ -4,14 +4,14 @@
             "name": "ARM",
             "includePath": [
                 "${workspaceRoot}/include",
-                "${workspaceRoot}/libs/CMSIS_5/CMSIS/Core/Include",
-                "${workspaceRoot}/libs/CMSIS_5/CMSIS/DSP/Include",
-                "${workspaceRoot}/libs/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceRoot}/Drivers/CMSIS/Core/Include",
+                "${workspaceRoot}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceRoot}/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceRoot}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
                 "${workspaceFolder}/include",
                 "${workspaceFolder}/src/modules",
-                "${workspaceFolder}/build/test/_deps/googletest-src/googletest/include",
                 "/Applications/ArmGNUToolchain/11.3.rel1/arm-none-eabi/arm-none-eabi/include/c++/11.3.1",
-                "${workspaceFolder}/build/_deps/googletest-src/googletest/include"
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
             ],
             "defines": [
                 "STM32F407xx",

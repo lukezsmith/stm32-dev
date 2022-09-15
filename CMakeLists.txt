@@ -21,27 +21,61 @@ set(CPU_PARAMETERS
 set(PROJECT_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR})    
 set(PROJECT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-set(STARTUP_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/include/startup_stm32f407vgtx.s)
+set(STARTUP_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/src/startup_stm32f407xx.s)
 set(MCU_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/flash/STM32F407VGTX_FLASH.ld)
-set(CMSIS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/libs/CMSIS_5/CMSIS/Core)
+set(CMSIS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/CMSIS)
+set(HAL_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/STM32F4xx_HAL_Driver)
 
 add_subdirectory(src/modules)
 
 # Production build
 if(CMAKE_BUILD_TYPE STREQUAL release)
+    #  -------- Collate Code Sources --------
+    file(GLOB_RECURSE PROJECT_SOURCES "${PROJECT_DIR}/*.c")
+    file(GLOB_RECURSE HAL_SOURCES "${HAL_PATH}/Src/*.c")
+    #  -------- Include HAL Sources -------- 
+    set(HAL_SOURCES
+    ${HAL_PATH}/Src/stm32f4xx_hal_hcd.c 
+    ${HAL_PATH}/Src/stm32f4xx_ll_usb.c
+    ${HAL_PATH}/Src/stm32f4xx_hal_rcc.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_rcc_ex.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_flash.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_flash_ex.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_flash_ramfunc.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_gpio.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_dma_ex.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_dma.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_pwr.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_pwr_ex.c
+    ${HAL_PATH}/Src/stm32f4xx_hal_cortex.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_exti.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_i2c.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_i2c_ex.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_i2s.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_i2s_ex.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_spi.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_tim.c 
+    ${HAL_PATH}/Src/stm32f4xx_hal_tim_ex.c)
+
     #  -------- Create executable --------
     add_executable(${EXECUTABLE}
-        ${PROJECT_DIR}/${EXECUTABLE}.c
+        ${PROJECT_SOURCES}
+        ${HAL_SOURCES}
         ${STARTUP_SCRIPT})
         
     #  -------- Include dependencies --------
     target_include_directories(${EXECUTABLE} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${HAL_PATH}/Inc
+        ${HAL_PATH}/Inc/Legacy
+        ${CMSIS_PATH}/Device/ST/STM32F4xx/Include
         ${CMSIS_PATH}/Include)
 
     #  -------- Compilation configuration --------
     target_compile_options(${EXECUTABLE} PRIVATE
         ${CPU_PARAMETERS}
+            -DUSE_HAL_DRIVER 
             -DSTM32F407xx
             -std=gnu11
             -Wall
@@ -53,8 +87,8 @@ if(CMAKE_BUILD_TYPE STREQUAL release)
             -Wmissing-include-dirs
             -Wsign-compare
             -Wundef
-            -Wcast-align
-            -Wconversion
+            # -Wcast-align
+            # -Wconversion
             -fno-common
             -fsingle-precision-constant
             -fomit-frame-pointer

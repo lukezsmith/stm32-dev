@@ -28,6 +28,8 @@
         "numeric": "c",
         "sstream": "c",
         "cmath": "c",
-        "stm32f4xx_hal.h": "c"
+        "stm32f4xx_hal.h": "c",
+        "stm32f4xx.h": "c",
+        "stm32f4xx_hal_gpio.h": "c"
     }
 }

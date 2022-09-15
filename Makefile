@@ -17,8 +17,6 @@ endif
 all: build 
 	    @if [ "$(BUILD_TYPE)" = "test" ]; then \
 			$(CTEST_PATH) --test-dir $(BUILD_DIR);\
-		else \
-			$(STFLASH_PATH) write $(BUILD_DIR)/$(TARGET).bin 0x8000000;\
 		fi
 
 ${BUILD_DIR}/Makefile:
@@ -34,8 +32,8 @@ cmake: ${BUILD_DIR}/Makefile
 build: cmake
 	@$(MAKE) -C ${BUILD_DIR} --no-print-directory
 
-# flash: 
-# 	# @st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000
+flash: build/release/Makefile 
+	@st-flash write build/release/$(TARGET).bin 0x8000000
 
 # test: build
 # 	ctest --test-dir ./build/test
