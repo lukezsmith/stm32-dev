@@ -1,3 +1,33 @@
 {
-    "stm32-for-vscode.armToolchainPath": false
+    "stm32-for-vscode.armToolchainPath": "/opt/homebrew/bin/arm-none-eabi-gcc",
+
+    "emeraldwalk.runonsave": {
+        
+        "commands": [
+            {
+                "match": ".*",
+                "isAsync": true,
+                "cmd": "echo 'I run for all files.'"
+            },
+            {
+                "match": "\\.txt$",
+                "cmd": "echo 'I am a .txt file ${file}.'"
+            },
+            {
+                "match": "\\.c$",
+                "cmd": "make"
+            },
+        ]
+    },
+    "files.associations": {
+        "simple_module.h": "c",
+        "atomic": "c",
+        "*.tcc": "c",
+        "compare": "c",
+        "optional": "c",
+        "numeric": "c",
+        "sstream": "c",
+        "cmath": "c",
+        "stm32f4xx_hal.h": "c"
+    }
 }

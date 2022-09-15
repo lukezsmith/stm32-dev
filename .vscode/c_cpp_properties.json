@@ -5,9 +5,19 @@
             "includePath": [
                 "${workspaceRoot}/include",
                 "${workspaceRoot}/libs/CMSIS_5/CMSIS/Core/Include",
-                "${workspaceRoot}/libs/CMSIS_5/CMSIS/DSP/Include"
+                "${workspaceRoot}/libs/CMSIS_5/CMSIS/DSP/Include",
+                "${workspaceRoot}/libs/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/src/modules",
+                "${workspaceFolder}/build/test/_deps/googletest-src/googletest/include",
+                "/Applications/ArmGNUToolchain/11.3.rel1/arm-none-eabi/arm-none-eabi/include/c++/11.3.1",
+                "${workspaceFolder}/build/_deps/googletest-src/googletest/include"
             ],
-            "defines": ["STM32F407xx", "__VFP_FP__", "__ARM_ARCH_7EM__"],
+            "defines": [
+                "STM32F407xx",
+                "__VFP_FP__",
+                "__ARM_ARCH_7EM__"
+            ],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
@@ -18,7 +28,7 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
             },
-            "compilerPath": "arm-none-eabi-gcc",
+            "compilerPath": "/opt/homebrew/bin/arm-none-eabi-gcc",
             "cStandard": "gnu17",
             "cppStandard": "c++17"
         }
