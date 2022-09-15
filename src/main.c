@@ -3,7 +3,7 @@
 #include "stm32f4xx_hal_gpio.h"
 
 // LED delay duration
-#define LEDDELAY    1000000
+#define LEDDELAY    200000
 
 int main(){
 	
