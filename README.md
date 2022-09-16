@@ -27,9 +27,9 @@ To test new modules it is necessary to follow these steps:
 2. Rename `src/modules/<your_module_name>/simple_module.c` to `src/modules/<your_module_name>/your_module_name.c`
 3. Edit `src/modules/<your_module_name>/CMakeLists.txt` so `<your-module-name>` is the `MODULE_NAME` variable.
 4. Append `add_subdirectory(<your-module-name>)` to `src/modules/CMakeLists.txt`.
-5. Create the file test/test_<your_module_name>.c and add `test_<your_module_name>` to `test/CMakeLists.txt`:   
+5. Create the file test/test_<your_module_name>.c and add the following lines to `test/CMakeLists.txt`:   
 `list(APPEND tests_names "test_<your_module_name>")`
-
+`list(APPEND tests_flags " ")`
 #### HAL Drivers
 In `CMakeLists.txt` only a subset of HAL drivers have been added to the executable build. It may be necessary to update this list if you use a HAL driver that is not already included in the executable. 
 **Note**: To use the HAL driver you will also need to enable it in the `include/stm32f4xx_hal_conf.h` file, also.
