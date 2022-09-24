@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Cortex Debug",
+        "cwd": "${workspaceRoot}",
+        "executable": "./build/release/main.elf",
+        "request": "launch",
+        "type": "cortex-debug",
+        "servertype": "openocd",
+        "device": "STM32F407VG",
+        // "interface": "swd",
+        "runToEntryPoint": "main",
+        "configFiles": [
+          "interface/stlink.cfg",
+          "target/stm32f4x.cfg"
+        ],
+        "showDevDebugOutput": "raw"
+        // "showDevDebugOutput": true
+      }
+    ],
+  }

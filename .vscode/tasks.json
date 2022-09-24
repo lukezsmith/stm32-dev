@@ -7,7 +7,7 @@
           "command": "",
           "args": [
               "make",
-              "BUILD_TYPE=test",
+              "TEST_MODE=TRUE",
           ],
           "group":  {
               "kind": "build",

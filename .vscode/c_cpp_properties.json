@@ -21,9 +21,7 @@
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
-                    "${workspaceRoot}/include",
-                    "${workspaceRoot}/libs/CMSIS_5/CMSIS/Core/Include",
-                    "${workspaceRoot}/libs/CMSIS_5/CMSIS/DSP/Include"
+                    "${workspaceRoot}/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""

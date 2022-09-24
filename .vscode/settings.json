@@ -31,5 +31,7 @@
         "stm32f4xx_hal.h": "c",
         "stm32f4xx.h": "c",
         "stm32f4xx_hal_gpio.h": "c"
-    }
+    },
+    "cortex-debug.showRTOS": false,
+    "cmake.configureOnOpen": false
 }
