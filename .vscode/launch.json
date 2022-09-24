@@ -15,8 +15,7 @@
           "interface/stlink.cfg",
           "target/stm32f4x.cfg"
         ],
-        "showDevDebugOutput": "raw"
-        // "showDevDebugOutput": true
+        // "showDevDebugOutput": "raw"
       }
     ],
   }
