@@ -5,7 +5,6 @@ TEST_MODE ?= FALSE
 BUILD_TYPE ?= Debug
 CMAKE_PATH := /opt/local/bin/cmake
 CTEST_PATH := /opt/local/bin/ctest
-STFLASH_PATH := /opt/homebrew/bin/st-flash
 
 ifeq ($(TEST_MODE), TRUE)
 	BUILD_DIR := build/test
